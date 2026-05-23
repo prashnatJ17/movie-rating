@@ -1,1 +1,137 @@
-# movie-rating
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movies App</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: gold;
+      margin-bottom: 30px;
+    }
+
+    .movies-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .movie-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: 0.3s;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.03);
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .movie-info {
+      padding: 15px;
+    }
+
+    .movie-info h2 {
+      margin-top: 0;
+      color: gold;
+    }
+
+    .rating {
+      color: #00ff99;
+      font-weight: bold;
+    }
+
+    button {
+      background: gold;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎬 Movies Collection</h1>
+
+  <div class="movies-container" id="moviesContainer"></div>
+
+  <script>
+    const movies = [
+      {
+        id: 1,
+        title: "Inception",
+        rating: 5,
+        image: "https://m.media-amazon.com/images/I/81p+xe8cbnL.jpg",
+        description:
+          "A thief who steals corporate secrets through dream-sharing technology."
+      },
+      {
+        id: 2,
+        title: "Interstellar",
+        rating: 4,
+        image: "https://m.media-amazon.com/images/I/91kFYg4fX3L.jpg",
+        description:
+          "A team of explorers travel through a wormhole in space."
+      },
+      {
+        id: 3,
+        title: "The Dark Knight",
+        rating: 5,
+        image: "https://m.media-amazon.com/images/I/81AJdOIEIQS.jpg",
+        description:
+          "Batman faces the Joker in Gotham City."
+      }
+    ];
+
+    const container = document.getElementById("moviesContainer");
+
+    movies.forEach((movie) => {
+      container.innerHTML += `
+        <div class="movie-card">
+          <img src="${movie.image}" alt="${movie.title}">
+          
+          <div class="movie-info">
+            <h2>${movie.title}</h2>
+
+            <p class="rating">⭐ Rating: ${movie.rating}/5</p>
+
+            <p>${movie.description}</p>
+
+            <button onclick="showMovie('${movie.title}')">
+              Watch Now
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    function showMovie(title) {
+      alert("You selected: " + title);
+    }
+  </script>
+
+</body>
+</html>
